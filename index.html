@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crave Saga Collection Tracker</title>
+<style>
+  body {
+    font-family: Open Sans, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .header {
+    color: #303d5b;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.5rem;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .title {
+    color: #6c7e8f;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .item-container {
+    display: flex;
+    gap: 10px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .item {
+    border: 3px solid #303d5b;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.5s, opacity 0.5s; /* Added opacity transition */
+    width: 150px;
+    background-color: #f8f9fa;
+  }
+
+  .item img {
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    margin-bottom: 5px;
+  }
+
+  .fire { background-color: #f8f9fa; }
+  .water { background-color: #f8f9fa; }
+  .earth { background-color: #f8f9fa; }
+  .wind { background-color: #f8f9fa; }
+  .light { background-color: #f8f9fa; }
+  .dark { background-color: #f8f9fa; }
+
+  .selected.fire { background-color: #f4a49f; }
+  .selected.water { background-color: #9eb8f5; }
+  .selected.earth { background-color: #c2b999; }
+  .selected.wind { background-color: #b3fdcb; }
+  .selected.light { background-color: #fff69d; }
+  .selected.dark { background-color: #e599fb; }
+
+  .item:not(.selected) img {
+    opacity: 0.25;
+  }
+
+  .team-builder {
+    border: 5px solid #303d5b;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px;
+    color: #6c7e8f;
+    font-weight: bold;
+  }
+
+  .team-builder input {
+    margin: 5px 0;
+  }
+
+  .input-row {
+    display: flex; /* Display the input containers horizontally */
+    gap: 10px; /* Add some spacing between input containers */
+    align-items: center; /* Vertically center the content */
+
+  }
+
+  .input-container {
+    display: flex; /* Display input and image side by side */
+    flex-direction: column-reverse; /* Stack the image on top of the input and reverse their order */
+    align-items: center; /* Vertically center the content */
+    gap: 10px; /* Add some spacing between input and image */
+
+  }
+
+  .soulmate-image,
+  .weapon-image,
+  .artifact-image {
+    width: 75x; /* Set the width of the image */
+    height: 75px; /* Set the height of the image */
+
+  }
+
+  .soulmate-input,
+  .weapon-input,
+  .artifact-input {
+    /* Adjust width as needed */
+    width: 75px;
+
+  }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Crave Saga Collection Tracker</h1>
+</div>
+
+<div class="team-builder">
+  <div>Team Builder</div>
+
+<div class="input-row">
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="soulmate-input" type="text" placeholder="Soulmate 1">
+     <img class="soulmate-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="soulmate-input" type="text" placeholder="Soulmate 2">
+     <img class="soulmate-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="soulmate-input" type="text" placeholder="Soulmate 3">
+     <img class="soulmate-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="soulmate-input" type="text" placeholder="Soulmate 4">
+     <img class="soulmate-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="soulmate-input" type="text" placeholder="Soulmate 5">
+     <img class="soulmate-image" src="" alt="">
+    </div>
+  </div>
+
+</div>
+  
+<div class="input-row">
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="weapon-input" type="text" placeholder="Weapon 1-A">
+     <img class="weapon-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="weapon-input" type="text" placeholder="Weapon 2-A">
+     <img class="weapon-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="weapon-input" type="text" placeholder="Weapon 3-A">
+     <img class="weapon-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="weapon-input" type="text" placeholder="Weapon 4-A">
+     <img class="weapon-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="weapon-input" type="text" placeholder="Weapon 5-A">
+     <img class="weapon-image" src="" alt="">
+    </div>
+  </div>
+
+</div>
+
+<div class="input-row">
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="weapon-input" type="text" placeholder="Weapon 1-B">
+     <img class="weapon-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="weapon-input" type="text" placeholder="Weapon 2-B">
+     <img class="weapon-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="weapon-input" type="text" placeholder="Weapon 3-B">
+     <img class="weapon-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="weapon-input" type="text" placeholder="Weapon 4-B">
+     <img class="weapon-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="weapon-input" type="text" placeholder="Weapon 5-B">
+     <img class="weapon-image" src="" alt="">
+    </div>
+  </div>
+
+</div>
+  
+<div class="input-row">
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="artifact-input" type="text" placeholder="Main Artifact">
+     <img class="artifact-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="artifact-input" type="text" placeholder="Sub Artifact">
+     <img class="artifact-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="artifact-input" type="text" placeholder="Sub Artifact">
+     <img class="artifact-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="artifact-input" type="text" placeholder="Sub Artifact">
+     <img class="artifact-image" src="" alt="">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div class="input-container">
+     <input class="artifact-input" type="text" placeholder="Sub Artifact">
+     <img class="artifact-image" src="" alt="">
+    </div>
+  </div>
+
+</div>
+
+</div>
+  <div class="section">
+    <div class="title">SSR Soulmates</div>
+    <div class="item-container">
+      <div class="item fire">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/d1/Karaha_Icon.png" alt="Karaha">
+        Karaha
+      </div>
+      <div class="item fire">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/5/5a/Kotaro_Icon.png" alt="Kotaro">
+        Kotaro
+      </div>
+      <div class="item fire">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/e/ef/Shaoren_Icon.png" alt="Shaoren">
+        Shaoren
+      </div>
+      <div class="item fire">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/8/81/Tesoro_Icon.png" alt="Tesoro">
+        Tesoro
+      </div>
+      <div class="item fire">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/4/4b/Vaskhaan_Icon.png" alt="Vaskhaan">
+        Vaskhaan
+      </div>
+      <div class="item fire">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/1/1a/Vastol_Icon.png" alt="Vastol">
+        Vastol
+      </div>
+      <div class="item water">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/1/14/%28Angler%29_Joe_Icon.png" alt="Angler Joe">
+        Angler Joe
+      </div>
+      <div class="item water">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/6/65/Chuck_Icon.png" alt="Chuck">
+        Chuck
+      </div>
+      <div class="item water">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/c/cc/Gai_Icon.png" alt="Gai">
+        Gai
+      </div>
+      <div class="item water">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/f/f1/Granruth_Icon.png" alt="Granruth">
+        Granruth
+      </div>
+      <div class="item water">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/da/Kinta_Icon.png" alt="Kinta">
+        Kinta
+      </div>
+      <div class="item earth">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/c/c6/Byaku_Icon.png" alt="Byaku">
+        Byaku
+      </div>
+      <div class="item earth">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/4/45/Craps_Icon.png" alt="Craps">
+        Craps
+      </div>
+      <div class="item earth">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/5/54/Ennick_Icon.png" alt="Ennick">
+        Ennick
+      </div>
+      <div class="item earth">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/a/ad/Gigant_Icon.png" alt="Gigant">
+        Gigant
+      </div>
+      <div class="item earth">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/1/16/Patrossi_Icon.png" alt="Patrossi">
+        Patrossi
+      </div>
+      <div class="item earth">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/a/a9/Radauros_Icon.png" alt="Radauros">
+        Radauros
+      </div>
+      <div class="item wind">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/dc/%28Festival_Man%29_Seldore_Icon.png" alt="Festival Seldore">
+        Festival Seldore
+      </div>
+      <div class="item wind">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/7/7b/Jeron_Icon.png" alt="Jeron">
+        Jeron
+      </div>
+      <div class="item wind">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/9/9c/Kelavish_Icon.png" alt="Kelavish">
+        Kelavish
+      </div>
+      <div class="item wind">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/b0/Lyon_Icon.png" alt="Lyon">
+        Lyon
+      </div>
+      <div class="item wind">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/b1/Phil_Icon.png" alt="Phil">
+        Phil
+      </div>
+      <div class="item light">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/2/23/%28Resonating_ROCK%29_Gabu_Icon.png" alt="Gabu">
+        Gabu
+      </div>
+      <div class="item light">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/1/1b/Bergamond_Icon.png" alt="Bergamond">
+        Bergamond
+      </div>
+      <div class="item light">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/d2/Epaulo_Icon.png" alt="Epaulo">
+        Epaulo
+      </div>
+      <div class="item light">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/dd/Nine_Icon.png" alt="Nine">
+        Nine
+      </div>
+      <div class="item dark">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/7/71/%28Roaring_Sea_Survivor%29_Hakuma_Icon.png" alt="Survivor Hakuma">
+        Survivor Hakuma
+      </div>
+      <div class="item dark">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/c/ca/Boun_Icon.png" alt="Boun">
+        Boun
+      </div>
+      <div class="item dark">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/f/fa/Lothar_Icon.png" alt="Lothar">
+        Lothar
+      </div>
+      <div class="item dark">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/6/62/Sabert_Icon.png" alt="Sabert">
+        Sabert
+      </div>
+      <div class="item dark">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/d0/Seldore_Icon.png" alt="Seldore">
+        Seldore
+      </div>
+      <div class="item dark">
+        <img class="item-img" src="https://static.miraheze.org/cravesagawiki/4/4e/Zark_Icon.png" alt="Zark">
+        Zark
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="title">SR Soulmates</div>
+    <div class="item-container">
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/1/18/Alvaro_Icon.png" alt="Alvaro">
+    Alvaro
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/a/a4/Andrei_Icon.png" alt="Andrei">
+    Andrei
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/b7/Dex_Icon.png" alt="Dex">
+    Dex
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/5/52/Garon_Icon.png" alt="Garon">
+    Garon
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/3/3c/Hakuma_Icon.png" alt="Hakuma">
+    Hakuma
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/8/89/Keel_Icon.png" alt="Keel">
+    Keel
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/d8/Nerfen_Icon.png" alt="Nerfen">
+    Nerfen
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/1/1f/Zagsia_Icon.png" alt="Zagsia">
+    Zagsia
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/0/01/Archem_Icon.png" alt="Archem">
+    Archem
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/3/36/Ash_Icon.png" alt="Ash">
+    Ash
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/d6/Koyomaru_Icon.png" alt="Koyomaru">
+    Koyomaru
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/b4/Lionel_Icon.png" alt="Lionel">
+    Lionel
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/d1/Pong_Icon.png" alt="Pong">
+    Pong
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/0/04/Remaias_Icon.png" alt="Remaias">
+    Remaias
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/e/e4/Conrad_Icon.png" alt="Conrad">
+    Conrad
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/c/cf/Mageiro_Icon.png" alt="Mageiro">
+    Mageiro
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/f/ff/Oguma_Icon.png" alt="Oguma">
+    Oguma
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/8/8e/Rahl_Icon.png" alt="Rahl">
+    Rahl
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/9/9f/Sergio_Icon.png" alt="Sergio">
+    Sergio
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/3/3f/Wheel_Icon.png" alt="Wheel">
+    Wheel
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/c/c5/%28Summer_Evening%29_Schmiel_Icon.png" alt="Summer Schmiel">
+    Summer Schmiel
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/6/68/Gabu_Icon.png" alt="Gabu">
+    Gabu
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/1/1d/Gary_Icon.png" alt="Gary">
+    Gary
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/2/26/Gordolf_Icon.png" alt="Gordolf">
+    Gordolf
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/b9/Ivan_Icon.png" alt="Ivan">
+    Ivan
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/3/35/Russell_Icon.png" alt="Russell">
+    Russell
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/5/53/Stannis_Icon.png" alt="Stannis">
+    Stannis
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/7/7e/Bran_Icon.png" alt="Bran">
+    Bran
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/a/a1/Jeffrey_Icon.png" alt="Jeffrey">
+    Jeffrey
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/5/5a/Main_Character_Icon.png" alt="Main Character">
+    Main Character
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/e/e9/Namda_Icon.png" alt="Namda">
+    Namda
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/e/e2/Schmiel_Icon.png" alt="Schmiel">
+    Schmiel
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/2/23/Seven_Icon.png" alt="Seven">
+    Seven
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/c/c2/Yannick_Icon.png" alt="Yannick">
+    Yannick
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/5/55/%28Sea_Breeze_Wave_Riding%29_Chuck_Icon.png" alt="Wave Chuck">
+    Wave Chuck
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/4/4b/Claude_Icon.png" alt="Claude">
+    Claude
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/df/Defrecht_Icon.png" alt="Defrecht">
+    Defrecht
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/6/61/Emua_Icon.png" alt="Emua">
+    Emua
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/d3/Sakamata_Icon.png" alt="Sakamata">
+    Sakamata
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/f/f9/Yatilde_Icon.png" alt="Yatilde">
+    Yatilde
+  </div>
+  </div>
+  </div>
+
+  <div class="section">
+    <div class="title">R Soulmates</div>
+    <div class="item-container">
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/d1/Eateg_Icon.png" alt="Eateg">
+    Eateg
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/5/50/Guardion_Icon.png" alt="Guardion">
+    Guardion
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/3/3f/Roton_Icon.png" alt="Roton">
+    Roton
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/0/04/Creora_Icon.png" alt="Creora">
+    Creora
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/2/26/Django_Icon.png" alt="Django">
+    Django
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/6/6b/Parker_Icon.png" alt="Parker">
+    Parker
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/be/Brando_Icon.png" alt="Brando">
+    Brando
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/1/11/Galgo_Icon.png" alt="Galgo">
+    Galgo
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/f/f6/Gastor_Icon.png" alt="Gastor">
+    Gastor
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/c/ce/Leonardo_Icon.png" alt="Leonardo">
+    Leonardo
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/c/c3/Lybel_Icon.png" alt="Lybel">
+    Lybel
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/1/15/Maxi_Icon.png" alt="Maxi">
+    Maxi
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/b3/Tilt_Icon.png" alt="Tilt">
+    Tilt
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/bd/Fubuki_Icon.png" alt="Fubuki">
+    Fubuki
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/e/ef/Joe_Icon.png" alt="Joe">
+    Joe
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/3/34/Macvis_Icon.png" alt="Macvis">
+    Macvis
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/c/c4/Noche_Icon.png" alt="Noche">
+    Noche
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/6/64/Yuriganos_Icon.png" alt="Yuriganos">
+    Yuriganos
+  </div>
+  </div>
+  </div>
+
+  <div class="section">
+    <div class="title">SSR Weapons</div>
+    <div class="item fire">
+      <img class="item-img" src="https://static.miraheze.org/cravesagawiki/thumb/c/c7/Archetic_Shield_%28Fire%29.png/174px-Archetic_Shield_%28Fire%29.png" alt="Archetic Shield">
+      Archetic Shield
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="title">SR Weapons</div>
+    <div class="item earth">
+      <img class="item-img" src="https://static.miraheze.org/cravesagawiki/thumb/6/6e/Achilles_%28Weapon%29.png/174px-Achilles_%28Weapon%29.png" alt="Achilles">
+      Achilles
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="title">R Weapons</div>
+    <div class="item water">
+      <img class="item-img" src="https://static.miraheze.org/cravesagawiki/thumb/3/36/Noble_Shield.png/174px-Noble_Shield.png" alt="Noble Shield">
+      Noble Shield
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="title">N Weapons</div>
+    <div class="item wind">
+      <img class="item-img" src="https://static.miraheze.org/cravesagawiki/thumb/e/ed/Balthazan_Gun_%28Wind%29.png/174px-Balthazan_Gun_%28Wind%29.png" alt="Balthazan Gun">
+      Balthazan Gun
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="title">SSR Artifacts</div>
+    <div class="item-container">
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/2/26/Colada_Tizon_Icon.png" alt="Colada Tizon">
+    Colada Tizon
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/d9/Dahomeyloa_Icon.png" alt="Dahomeyloa">
+    Dahomeyloa
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/6/63/Gungnir_Icon.png" alt="Gungnir">
+    Gungnir
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/8/8d/Kerykeion_Icon.png" alt="Kerykeion">
+    Kerykeion
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/d5/Ra_Icon.png" alt="Ra">
+    Ra
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/e/ea/Sudarshana_Icon.png" alt="Sudarshana">
+    Sudarshana
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/e/e6/Xiuhcoatl_Icon.png" alt="Xiuhcoatl">
+    Xiuhcoatl
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/1/1d/Akkerte_Icon.png" alt="Akkerte">
+    Akkerte
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/a/ab/Gae_Bolg_Icon.png" alt="Gae Bolg">
+    Gae Bolg
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/f/f6/Guandao_Icon.png" alt="Guandao">
+    Guandao
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/2/28/Kabutafel_Icon.png" alt="Kabutafel">
+    Kabutafel
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/bd/Yasakani_no_Magatama_Icon.png" alt="Yasakani Magatama">
+    Yasakani Magatama
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/a/a0/%28Holy_Sword%27s_Sweet_Love%29_Excalibur_Icon.png" alt="Sweet Excalibur">
+    Sweet Excalibur
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/bc/Aegis_Icon.png" alt="Aegis">
+    Aegis
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/b0/Fragarach_Icon.png" alt="Fragarach">
+    Fragarach
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/e/e6/Jakris_Icon.png" alt="Jakris">
+    Jakris
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/db/Mjolnir_Icon.png" alt="Mjolnir">
+    Mjolnir
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/b0/Ame_no_Tsuzumi_Icon.png" alt="Ame no Tsuzumi">
+    Ame no Tsuzumi
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/4/4e/Durandal_Icon.png" alt="Durandal">
+    Durandal
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/bb/Gram_Icon.png" alt="Gram">
+    Gram
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/7/76/Kusanagi_Icon.png" alt="Kusanagi">
+    Kusanagi
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/b/b0/Romulus_Icon.png" alt="Romulus">
+    Romulus
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/c/c5/Shinkun_Icon.png" alt="Shinkun">
+    Shinkun
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/6/67/Brionac_Icon.png" alt="Brionac">
+    Brionac
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/c/c6/Cupid_Icon.png" alt="Cupid">
+    Cupid
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/6/66/Excalibur_Icon.png" alt="Excalibur">
+    Excalibur
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/6/61/Jinn_Icon.png" alt="Jinn">
+    Jinn
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/c/cd/Souryu_Icon.png" alt="Souryu">
+    Souryu
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/a/a9/Yata_no_Kagami_Icon.png" alt="Yata no Kagami">
+    Yata no Kagami
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/e/e4/%28Bewitched_By_Love%29_Excalibur_Icon.png" alt="Bewitched Excalibur">
+    Bewitched Excalibur
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/6/65/Adamas_Icon.png" alt="Adamas">
+    Adamas
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/2/24/Artemion_Icon.png" alt="Artemion">
+    Artemion
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/4/44/Ascalon_Icon.png" alt="Ascalon">
+    Ascalon
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/1/10/Njord_Icon.png" alt="Njord">
+    Njord
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/6/62/Varja_Icon.png" alt="Varja">
+    Varja
+  </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="title">SR Artifacts</div>
+    <div class="item-container">
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/c/c8/Frey_Icon.png" alt="Frey">
+    Frey
+  </div>
+  <div class="item fire">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/e/e6/Svalinn_Icon.png" alt="Svalinn">
+    Svalinn
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/4/44/Azoth_Icon.png" alt="Azoth">
+    Azoth
+  </div>
+  <div class="item water">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/1/1e/Yatsukamizu_Icon.png" alt="Yatsukamizu">
+    Yatsukamizu
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/d9/Achilles_Icon.png" alt="Achilles">
+    Achilles
+  </div>
+  <div class="item earth">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/2/22/Nichouhanpu_Icon.png" alt="Nichouhanpu">
+    Nichouhanpu
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/9/90/Haekingr_Icon.png" alt="Haekingr">
+    Haekingr
+  </div>
+  <div class="item wind">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/d/d9/Ugou_Icon.png" alt="Ugou">
+    Ugou
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/5/5d/Caladbolg_Icon.png" alt="Caladbolg">
+    Caladbolg
+  </div>
+  <div class="item light">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/f/f6/Jarngreipr_Icon.png" alt="Jarngreipr">
+    Jarngreipr
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/1/1f/Liafail_Icon.png" alt="Liafail">
+    Liafail
+  </div>
+  <div class="item dark">
+    <img class="item-img" src="https://static.miraheze.org/cravesagawiki/e/e1/Uas_Icon.png" alt="Uas">
+    Uas
+  </div>
+  </div>
+  </div>
+
+<script>
+  const soulmateInputs = document.querySelectorAll('.soulmate-input');
+  const soulmateImages = document.querySelectorAll('.soulmate-image');
+  const weaponInputs = document.querySelectorAll('.weapon-input');
+  const weaponImages = document.querySelectorAll('.weapon-image');
+  const artifactInputs = document.querySelectorAll('.artifact-input');
+  const artifactImages = document.querySelectorAll('.artifact-image');
+
+  const soulmateMapping = {
+  karaha: 'https://static.miraheze.org/cravesagawiki/d/d1/Karaha_Icon.png',
+  kotaro: 'https://static.miraheze.org/cravesagawiki/5/5a/Kotaro_Icon.png',
+  shaoren: 'https://static.miraheze.org/cravesagawiki/e/ef/Shaoren_Icon.png',
+  tesoro: 'https://static.miraheze.org/cravesagawiki/8/81/Tesoro_Icon.png',
+  vaskhaan: 'https://static.miraheze.org/cravesagawiki/4/4b/Vaskhaan_Icon.png',
+  vastol: 'https://static.miraheze.org/cravesagawiki/1/1a/Vastol_Icon.png',
+  'angler joe': 'https://static.miraheze.org/cravesagawiki/1/14/%28Angler%29_Joe_Icon.png',
+  chuck: 'https://static.miraheze.org/cravesagawiki/6/65/Chuck_Icon.png',
+  gai: 'https://static.miraheze.org/cravesagawiki/c/cc/Gai_Icon.png',
+  granruth: 'https://static.miraheze.org/cravesagawiki/f/f1/Granruth_Icon.png',
+  kinta: 'https://static.miraheze.org/cravesagawiki/d/da/Kinta_Icon.png',
+  byaku: 'https://static.miraheze.org/cravesagawiki/c/c6/Byaku_Icon.png',
+  craps: 'https://static.miraheze.org/cravesagawiki/4/45/Craps_Icon.png',
+  ennick: 'https://static.miraheze.org/cravesagawiki/5/54/Ennick_Icon.png',
+  gigant: 'https://static.miraheze.org/cravesagawiki/a/ad/Gigant_Icon.png',
+  patrossi: 'https://static.miraheze.org/cravesagawiki/1/16/Patrossi_Icon.png',
+  radauros: 'https://static.miraheze.org/cravesagawiki/a/a9/Radauros_Icon.png',
+  'festival seldore': 'https://static.miraheze.org/cravesagawiki/d/dc/%28Festival_Man%29_Seldore_Icon.png',
+  jeron: 'https://static.miraheze.org/cravesagawiki/7/7b/Jeron_Icon.png',
+  kelavish: 'https://static.miraheze.org/cravesagawiki/9/9c/Kelavish_Icon.png',
+  lyon: 'https://static.miraheze.org/cravesagawiki/b/b0/Lyon_Icon.png',
+  phil: 'https://static.miraheze.org/cravesagawiki/b/b1/Phil_Icon.png',
+  gabu: 'https://static.miraheze.org/cravesagawiki/2/23/%28Resonating_ROCK%29_Gabu_Icon.png',
+  bergamond: 'https://static.miraheze.org/cravesagawiki/1/1b/Bergamond_Icon.png',
+  epaulo: 'https://static.miraheze.org/cravesagawiki/d/d2/Epaulo_Icon.png',
+  nine: 'https://static.miraheze.org/cravesagawiki/d/dd/Nine_Icon.png',
+  'survivor hakuma': 'https://static.miraheze.org/cravesagawiki/7/71/%28Roaring_Sea_Survivor%29_Hakuma_Icon.png',
+  boun: 'https://static.miraheze.org/cravesagawiki/c/ca/Boun_Icon.png',
+  lothar: 'https://static.miraheze.org/cravesagawiki/f/fa/Lothar_Icon.png',
+  sabert: 'https://static.miraheze.org/cravesagawiki/6/62/Sabert_Icon.png',
+  seldore: 'https://static.miraheze.org/cravesagawiki/d/d0/Seldore_Icon.png',
+  zark: 'https://static.miraheze.org/cravesagawiki/4/4e/Zark_Icon.png',
+  alvaro: 'https://static.miraheze.org/cravesagawiki/1/18/Alvaro_Icon.png',
+  andrei: 'https://static.miraheze.org/cravesagawiki/a/a4/Andrei_Icon.png',
+  dex: 'https://static.miraheze.org/cravesagawiki/b/b7/Dex_Icon.png',
+  garon: 'https://static.miraheze.org/cravesagawiki/5/52/Garon_Icon.png',
+  hakuma: 'https://static.miraheze.org/cravesagawiki/3/3c/Hakuma_Icon.png',
+  keel: 'https://static.miraheze.org/cravesagawiki/8/89/Keel_Icon.png',
+  nerfen: 'https://static.miraheze.org/cravesagawiki/d/d8/Nerfen_Icon.png',
+  zagsia: 'https://static.miraheze.org/cravesagawiki/1/1f/Zagsia_Icon.png',
+  archem: 'https://static.miraheze.org/cravesagawiki/0/01/Archem_Icon.png',
+  ash: 'https://static.miraheze.org/cravesagawiki/3/36/Ash_Icon.png',
+  koyomaru: 'https://static.miraheze.org/cravesagawiki/d/d6/Koyomaru_Icon.png',
+  lionel: 'https://static.miraheze.org/cravesagawiki/b/b4/Lionel_Icon.png',
+  pong: 'https://static.miraheze.org/cravesagawiki/d/d1/Pong_Icon.png',
+  remaias: 'https://static.miraheze.org/cravesagawiki/0/04/Remaias_Icon.png',
+  conrad: 'https://static.miraheze.org/cravesagawiki/e/e4/Conrad_Icon.png',
+  mageiro: 'https://static.miraheze.org/cravesagawiki/c/cf/Mageiro_Icon.png',
+  oguma: 'https://static.miraheze.org/cravesagawiki/f/ff/Oguma_Icon.png',
+  rahl: 'https://static.miraheze.org/cravesagawiki/8/8e/Rahl_Icon.png',
+  sergio: 'https://static.miraheze.org/cravesagawiki/9/9f/Sergio_Icon.png',
+  wheel: 'https://static.miraheze.org/cravesagawiki/3/3f/Wheel_Icon.png',
+  'summer schmiel': 'https://static.miraheze.org/cravesagawiki/c/c5/%28Summer_Evening%29_Schmiel_Icon.png',
+  gary: 'https://static.miraheze.org/cravesagawiki/6/68/Gabu_Icon.png',
+  gordolf: 'https://static.miraheze.org/cravesagawiki/1/1d/Gary_Icon.png',
+  ivan: 'https://static.miraheze.org/cravesagawiki/2/26/Gordolf_Icon.png',
+  russell: 'https://static.miraheze.org/cravesagawiki/3/35/Russell_Icon.png',
+  stannis: 'https://static.miraheze.org/cravesagawiki/5/53/Stannis_Icon.png',
+  bran: 'https://static.miraheze.org/cravesagawiki/7/7e/Bran_Icon.png',
+  jeffrey: 'https://static.miraheze.org/cravesagawiki/a/a1/Jeffrey_Icon.png',
+  'main character': 'https://static.miraheze.org/cravesagawiki/5/5a/Main_Character_Icon.png',
+  namda: 'https://static.miraheze.org/cravesagawiki/e/e9/Namda_Icon.png',
+  schmiel: 'https://static.miraheze.org/cravesagawiki/e/e2/Schmiel_Icon.png',
+  seven: 'https://static.miraheze.org/cravesagawiki/2/23/Seven_Icon.png',
+  yannick: 'https://static.miraheze.org/cravesagawiki/c/c2/Yannick_Icon.png',
+  'wave chuck': 'https://static.miraheze.org/cravesagawiki/5/55/%28Sea_Breeze_Wave_Riding%29_Chuck_Icon.png',
+  claude: 'https://static.miraheze.org/cravesagawiki/4/4b/Claude_Icon.png',
+  defrecht: 'https://static.miraheze.org/cravesagawiki/d/df/Defrecht_Icon.png',
+  emua: 'https://static.miraheze.org/cravesagawiki/6/61/Emua_Icon.png',
+  sakamata: 'https://static.miraheze.org/cravesagawiki/d/d3/Sakamata_Icon.png',
+  yatilde: 'https://static.miraheze.org/cravesagawiki/f/f9/Yatilde_Icon.png',
+  eateg: 'https://static.miraheze.org/cravesagawiki/d/d1/Eateg_Icon.png',
+  guardion: 'https://static.miraheze.org/cravesagawiki/5/50/Guardion_Icon.png',
+  roton: 'https://static.miraheze.org/cravesagawiki/3/3f/Roton_Icon.png',
+  creora: 'https://static.miraheze.org/cravesagawiki/0/04/Creora_Icon.png',
+  django: 'https://static.miraheze.org/cravesagawiki/2/26/Django_Icon.png',
+  parker: 'https://static.miraheze.org/cravesagawiki/6/6b/Parker_Icon.png',
+  brando: 'https://static.miraheze.org/cravesagawiki/b/be/Brando_Icon.png',
+  galgo: 'https://static.miraheze.org/cravesagawiki/1/11/Galgo_Icon.png',
+  gastor: 'https://static.miraheze.org/cravesagawiki/f/f6/Gastor_Icon.png',
+  leonardo: 'https://static.miraheze.org/cravesagawiki/c/ce/Leonardo_Icon.png',
+  lybel: 'https://static.miraheze.org/cravesagawiki/c/c3/Lybel_Icon.png',
+  maxi: 'https://static.miraheze.org/cravesagawiki/1/15/Maxi_Icon.png',
+  tilt: 'https://static.miraheze.org/cravesagawiki/b/b3/Tilt_Icon.png',
+  fubuki: 'https://static.miraheze.org/cravesagawiki/b/bd/Fubuki_Icon.png',
+  joe: 'https://static.miraheze.org/cravesagawiki/e/ef/Joe_Icon.png',
+  macvis: 'https://static.miraheze.org/cravesagawiki/3/34/Macvis_Icon.png',
+  noche: 'https://static.miraheze.org/cravesagawiki/c/c4/Noche_Icon.png',
+  yuriganos: 'https://static.miraheze.org/cravesagawiki/6/64/Yuriganos_Icon.png',
+    // Add more soulmate mappings
+  };
+
+  const weaponMapping = {
+    'archetic shield': 'https://static.miraheze.org/cravesagawiki/thumb/c/c7/Archetic_Shield_%28Fire%29.png/174px-Archetic_Shield_%28Fire%29.png',
+    achilles: 'https://static.miraheze.org/cravesagawiki/thumb/6/6e/Achilles_%28Weapon%29.png/174px-Achilles_%28Weapon%29.png',
+    // Add more weapon mappings
+  };
+
+  const artifactMapping = {
+    'colada tizon': 'https://static.miraheze.org/cravesagawiki/2/26/Colada_Tizon_Icon.png',
+    frey: 'https://static.miraheze.org/cravesagawiki/c/c8/Frey_Icon.png',
+  'dahomeyloa': 'https://static.miraheze.org/cravesagawiki/d/d9/Dahomeyloa_Icon.png',
+  'gungnir': 'https://static.miraheze.org/cravesagawiki/6/63/Gungnir_Icon.png',
+  'kerykeion': 'https://static.miraheze.org/cravesagawiki/8/8d/Kerykeion_Icon.png',
+  'ra': 'https://static.miraheze.org/cravesagawiki/d/d5/Ra_Icon.png',
+  'sudarshana': 'https://static.miraheze.org/cravesagawiki/e/ea/Sudarshana_Icon.png',
+  'xiuhcoatl': 'https://static.miraheze.org/cravesagawiki/e/e6/Xiuhcoatl_Icon.png',
+  'akkerte': 'https://static.miraheze.org/cravesagawiki/1/1d/Akkerte_Icon.png',
+  'gae bolg': 'https://static.miraheze.org/cravesagawiki/a/ab/Gae_Bolg_Icon.png',
+  'guandao': 'https://static.miraheze.org/cravesagawiki/f/f6/Guandao_Icon.png',
+  'kabutafel': 'https://static.miraheze.org/cravesagawiki/2/28/Kabutafel_Icon.png',
+  'yasakani magatama': 'https://static.miraheze.org/cravesagawiki/b/bd/Yasakani_no_Magatama_Icon.png',
+  'sweet excalibur': 'https://static.miraheze.org/cravesagawiki/a/a0/%28Holy_Sword%27s_Sweet_Love%29_Excalibur_Icon.png',
+  'aegis': 'https://static.miraheze.org/cravesagawiki/b/bc/Aegis_Icon.png',
+  'fragarach': 'https://static.miraheze.org/cravesagawiki/b/b0/Fragarach_Icon.png',
+  'jakris': 'https://static.miraheze.org/cravesagawiki/e/e6/Jakris_Icon.png',
+  'mjolnir': 'https://static.miraheze.org/cravesagawiki/d/db/Mjolnir_Icon.png',
+  'ame no tsuzumi': 'https://static.miraheze.org/cravesagawiki/b/b0/Ame_no_Tsuzumi_Icon.png',
+  'durandal': 'https://static.miraheze.org/cravesagawiki/4/4e/Durandal_Icon.png',
+  'gram': 'https://static.miraheze.org/cravesagawiki/b/bb/Gram_Icon.png',
+  'kusanagi': 'https://static.miraheze.org/cravesagawiki/7/76/Kusanagi_Icon.png',
+  'romulus': 'https://static.miraheze.org/cravesagawiki/b/b0/Romulus_Icon.png',
+  'shinkun': 'https://static.miraheze.org/cravesagawiki/c/c5/Shinkun_Icon.png',
+  'brionac': 'https://static.miraheze.org/cravesagawiki/6/67/Brionac_Icon.png',
+  'cupid': 'https://static.miraheze.org/cravesagawiki/c/c6/Cupid_Icon.png',
+  'excalibur': 'https://static.miraheze.org/cravesagawiki/6/66/Excalibur_Icon.png',
+  'jinn': 'https://static.miraheze.org/cravesagawiki/6/61/Jinn_Icon.png',
+  'souryu': 'https://static.miraheze.org/cravesagawiki/c/cd/Souryu_Icon.png',
+  'yata no kagami': 'https://static.miraheze.org/cravesagawiki/a/a9/Yata_no_Kagami_Icon.png',
+  'bewitched excalibur': 'https://static.miraheze.org/cravesagawiki/e/e4/%28Bewitched_By_Love%29_Excalibur_Icon.png',
+  'adamas': 'https://static.miraheze.org/cravesagawiki/6/65/Adamas_Icon.png',
+  'artemion': 'https://static.miraheze.org/cravesagawiki/2/24/Artemion_Icon.png',
+  'ascalon': 'https://static.miraheze.org/cravesagawiki/4/44/Ascalon_Icon.png',
+  'njord': 'https://static.miraheze.org/cravesagawiki/1/10/Njord_Icon.png',
+  'varja': 'https://static.miraheze.org/cravesagawiki/6/62/Varja_Icon.png',
+  'svalinn': 'https://static.miraheze.org/cravesagawiki/e/e6/Svalinn_Icon.png',
+  'azoth': 'https://static.miraheze.org/cravesagawiki/4/44/Azoth_Icon.png',
+  'yatsukamizu': 'https://static.miraheze.org/cravesagawiki/1/1e/Yatsukamizu_Icon.png',
+  'achilles': 'https://static.miraheze.org/cravesagawiki/d/d9/Achilles_Icon.png',
+  'nichouhanpu': 'https://static.miraheze.org/cravesagawiki/2/22/Nichouhanpu_Icon.png',
+  'haekingr': 'https://static.miraheze.org/cravesagawiki/9/90/Haekingr_Icon.png',
+  'ugou': 'https://static.miraheze.org/cravesagawiki/d/d9/Ugou_Icon.png',
+  'caladbolg': 'https://static.miraheze.org/cravesagawiki/5/5d/Caladbolg_Icon.png',
+  'jarngreipr': 'https://static.miraheze.org/cravesagawiki/f/f6/Jarngreipr_Icon.png',
+  'liafail': 'https://static.miraheze.org/cravesagawiki/1/1f/Liafail_Icon.png',
+  'uas': 'https://static.miraheze.org/cravesagawiki/e/e1/Uas_Icon.png',
+    // Add more artifact mappings
+  };
+
+  function setInputImageMapping(inputs, images, mapping, cookieName) {
+    inputs.forEach((input, index) => {
+      input.addEventListener('input', () => {
+        const inputValue = input.value.toLowerCase();
+        images[index].src = mapping[inputValue] || '';
+        setCookie(cookieName + index, inputValue, 30); // Save the input value in a cookie
+      });
+
+      const cookieValue = getCookie(cookieName + index);
+      if (cookieValue) {
+        input.value = cookieValue;
+        images[index].src = mapping[cookieValue] || '';
+      }
+    });
+  }
+
+  function setCookie(name, value, days) {
+    const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+  }
+
+  function getCookie(name) {
+    const cookieValue = document.cookie
+      .split('; ')
+      .find(cookie => cookie.startsWith(name))
+      ?.split('=')[1];
+    return cookieValue ? decodeURIComponent(cookieValue) : null;
+  }
+
+  setInputImageMapping(soulmateInputs, soulmateImages, soulmateMapping, 'soulmate');
+  setInputImageMapping(weaponInputs, weaponImages, weaponMapping, 'weapon');
+  setInputImageMapping(artifactInputs, artifactImages, artifactMapping, 'artifact');
+
+  const items = document.querySelectorAll('.item');
+
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('selected');
+    });
+  });
+</script>
+</body>
+</html>
+
