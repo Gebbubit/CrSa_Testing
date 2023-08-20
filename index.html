@@ -1093,13 +1093,23 @@
   setInputImageMapping(weaponInputs, weaponImages, weaponMapping, 'weapon');
   setInputImageMapping(artifactInputs, artifactImages, artifactMapping, 'artifact');
 
-  const items = document.querySelectorAll('.item');
+const items = document.querySelectorAll('.item');
 
-  items.forEach(item => {
-    item.addEventListener('click', () => {
-      item.classList.toggle('selected');
-    });
+items.forEach((item, index) => {
+  const cookieName = `character-${index}`;
+  item.addEventListener('click', () => {
+    item.classList.toggle('selected');
+    const isSelected = item.classList.contains('selected');
+    // Save selection to a cookie
+    document.cookie = `${cookieName}=${isSelected ? '1' : '0'}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
   });
+
+  // Retrieve and set selection from cookie
+  const cookieValue = getCookie(cookieName);
+  if (cookieValue === '1') {
+    item.classList.add('selected');
+  }
+});
 </script>
 </body>
 </html>
