@@ -11,6 +11,9 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    zoom: 90%;
+    margin: 20px;
+    padding: 0;
   }
 
   .header {
@@ -41,6 +44,7 @@
     justify-content: center;
     text-align: center;
     color: #303d5b;
+    zoom: 75%;
 
   }
 
@@ -129,6 +133,24 @@
 
 
   }
+
+/* Add a black border around the input and image container for Main Artifact */
+.input-container.artifact {
+  border: 3px solid #989ead; /* Black border */
+  background-color: #e4e8eb;
+  padding: 3px;
+}
+
+/* Update the width of the artifact image to match the container */
+.artifact-image {
+  width: 75px; /* Set the width of the image */
+  height: 75px; /* Set the height of the image */
+}
+
+/* Adjust the margin for better spacing */
+.input-container.artifact {
+  margin-bottom: 0px;
+}
 
 </style>
 </head>
@@ -261,9 +283,9 @@
 <div class="input-row">
 
   <div class="input-row">
-    <div class="input-container">
-     <input class="artifact-input" type="text" placeholder="Main Artifact">
-     <img class="artifact-image" src="https://static.miraheze.org/cravesagawiki/b/bd/Golden_Fairy_Statue.png" alt="">
+    <div class="input-container artifact">
+      <input class="artifact-input" type="text" placeholder="Main Artifact">
+      <img class="artifact-image" src="https://static.miraheze.org/cravesagawiki/b/bd/Golden_Fairy_Statue.png" alt="">
     </div>
   </div>
 
@@ -2997,7 +3019,6 @@
   };
 
   const weaponMapping = {
-    achilles: 'https://static.miraheze.org/cravesagawiki/thumb/6/6e/Achilles_%28Weapon%29.png/174px-Achilles_%28Weapon%29.png',
   'chapter of sweat and training flame sword': 'https://static.miraheze.org/cravesagawiki/thumb/f/f4/%22Chapter_of_Sweat_and_Training%22_Flame_Sword.png/135px-%22Chapter_of_Sweat_and_Training%22_Flame_Sword.png',
   'archetic axe (fire)': 'https://static.miraheze.org/cravesagawiki/thumb/6/6b/Archetic_Axe_%28Fire%29.png/135px-Archetic_Axe_%28Fire%29.png',
   'archetic bow (fire)': 'https://static.miraheze.org/cravesagawiki/thumb/5/5d/Archetic_Bow_%28Fire%29.png/135px-Archetic_Bow_%28Fire%29.png',
@@ -3493,3 +3514,4 @@ items.forEach((item, index) => {
 </script>
 </body>
 </html>
+
