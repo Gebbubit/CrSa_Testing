@@ -23,6 +23,12 @@
     font-size: 1.5rem;
   }
 
+.header p {
+  color: #6c7e8f;
+  font-size: 1rem;
+  margin-top: 10px; /* Add some space above the paragraph */
+}
+
   .section {
     display: flex;
     flex-direction: column;
@@ -152,12 +158,42 @@
   margin-bottom: 0px;
 }
 
+.element-toggles {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.element-toggle {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  opacity: 0.5;
+
+}
+
+.element-toggle:hover {
+  opacity: 1;
+}
+
 </style>
 </head>
 <body>
 
 <div class="header">
   <h1>Crave Saga Collection Tracker</h1>
+  <p>Version 1.0</p>
+</div>
+
+<div class="element-toggles">
+  <img class="element-toggle fire" src="https://static.miraheze.org/cravesagawiki/4/49/ElementFire.png" alt="Fire">
+  <img class="element-toggle water" src="https://static.miraheze.org/cravesagawiki/a/ae/ElementWater.png" alt="Water">
+  <img class="element-toggle earth" src="https://static.miraheze.org/cravesagawiki/b/b7/ElementEarth.png" alt="Earth">
+  <img class="element-toggle wind" src="https://static.miraheze.org/cravesagawiki/1/1d/ElementWind.png" alt="Wind">
+  <img class="element-toggle light" src="https://static.miraheze.org/cravesagawiki/8/8d/ElementLight.png" alt="Light">
+  <img class="element-toggle dark" src="https://static.miraheze.org/cravesagawiki/2/27/ElementDark.png" alt="Dark">
 </div>
 
 <div class="team-builder">
@@ -3512,6 +3548,21 @@ items.forEach((item, index) => {
   }
 });
 </script>
+
+<script>
+  // ... Your existing script ...
+
+  const elementToggles = document.querySelectorAll('.element-toggle');
+  const teamBuilder = document.querySelector('.team-builder');
+
+  elementToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const elementClass = toggle.classList[1]; // Get the second class, e.g., "fire"
+      teamBuilder.className = 'team-builder selected ' + elementClass; // Add "selected" class
+    });
+  });
+</script>
+
 </body>
 </html>
 
