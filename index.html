@@ -149,6 +149,21 @@
   .element-toggle:hover {
     opacity: 1;
   }
+  .clear-button {
+    margin-top: 10px; /* Adjust the margin as needed */
+    margin-bottom: 10px;
+    background-color: #303d5b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
+    font-size: .75rem;
+  }
+  .clear-button:hover {
+    background-color: #6c7e8f;
+  }
   @media (max-width: 480px) {
     body {
     zoom: 75%;
@@ -172,13 +187,16 @@
   <img class="element-toggle wind" src="https://static.miraheze.org/cravesagawiki/1/1d/ElementWind.png" alt="Wind">
   <img class="element-toggle light" src="https://static.miraheze.org/cravesagawiki/8/8d/ElementLight.png" alt="Light">
   <img class="element-toggle dark" src="https://static.miraheze.org/cravesagawiki/2/27/ElementDark.png" alt="Dark">
+  <img class="element-toggle show-all" src="https://static.miraheze.org/cravesagawiki/9/94/Sealed.png" alt="Show All">
 </div>
 
 <!-- TEAM BUILDER BEGINS HERE -->
 
 <div class="team-builder">
   <div>Team Builder</div>
-  
+
+  <button id="clear-button" class="clear-button">RESET</button>
+
 <!-- THIS SECTION COVERS THE SOULMATE BOXES -->
 
   <div class="input-row">
@@ -2581,6 +2599,31 @@
 <!-- MAIN WEBSITE CONTENT ENDS HERE -->
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const clearButton = document.querySelector('#clear-button');
+
+  clearButton.addEventListener('click', () => {
+    const inputFields = document.querySelectorAll('.soulmate-input, .weapon-input, .artifact-input');
+    const imageFields = document.querySelectorAll('.soulmate-image, .weapon-image, .artifact-image');
+
+    // Delete cookies for team builder inputs
+    inputFields.forEach((input, index) => {
+      document.cookie = `soulmate${index}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+      document.cookie = `weapon${index}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+      document.cookie = `artifact${index}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    });
+
+    // Reset input values and image sources
+    inputFields.forEach(input => input.value = '');
+    imageFields.forEach(image => image.src = '');
+
+    // Refresh the page
+    location.reload();
+  });
+});
+</script>
+
+<script>
   // Mappings
   const soulmateMapping = {
   karaha: 'https://static.miraheze.org/cravesagawiki/d/d1/Karaha_Icon.png',
@@ -3202,7 +3245,29 @@
   });
 </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const showAllToggle = document.querySelector('.show-all');
+    const itemsToReset = document.querySelectorAll('.item');
+
+    showAllToggle.addEventListener('click', () => {
+      itemsToReset.forEach(item => {
+        item.classList.remove('selected');
+        localStorage.removeItem(item.getAttribute('data-storage-key'));
+      });
+    });
+  });
+</script>
+
 <!-- ELEMENTAL TOGGLE FUNCTION -->
+
+<script>
+  const showAllToggle = document.querySelector('.element-toggle.show-all'); // New toggle for Show All
+
+  showAllToggle.addEventListener('click', () => {
+    location.reload(); // Refresh the page
+  });
+</script>
 
 <script>
   const fireToggle = document.querySelector('.element-toggle.fire');
