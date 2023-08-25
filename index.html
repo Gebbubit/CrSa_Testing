@@ -53,9 +53,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: top;
     cursor: pointer;
     transition: background-color 0.5s, opacity 0.5s; /* Added opacity transition */
-    width: 150px;
+    width: 110px;
+    height: 100%;
     background-color: #f8f9fa;
   }
   .item img {
@@ -2124,10 +2126,6 @@
       S Steam Powered Blade (Fire)
     </div>
     <div class="item fire">
-      <img class="item-img" src="https://static.miraheze.org/cravesagawiki/thumb/8/8f/S_Steam_Powered_Blade_%28Fire%29.png/135px-S_Steam_Powered_Blade_%28Fire%29.png" alt="S Steam Powered Blade (Fire)">
-      S Steam Powered Blade (Fire)
-    </div>
-    <div class="item fire">
       <img class="item-img" src="https://static.miraheze.org/cravesagawiki/thumb/6/66/S_Steam_Powered_Bow_%28Fire%29.png/135px-S_Steam_Powered_Bow_%28Fire%29.png" alt="S Steam Powered Bow (Fire)">
       S Steam Powered Bow (Fire)
     </div>
@@ -2313,7 +2311,12 @@
     </div><div class="item light">
       <img class="item-img" src="https://static.miraheze.org/cravesagawiki/thumb/5/55/S_Steam_Powered_Axe_%28Light%29.png/135px-S_Steam_Powered_Axe_%28Light%29.png" alt="S Steam Powered Axe (Light)">
       S Steam Powered Axe (Light)
-    </div><div class="item light">
+    </div>
+    <div class="item light">
+      <img class="item-img" src="https://static.miraheze.org/cravesagawiki/thumb/b/bc/S_Steam_Powered_Blade_%28Light%29.png/135px-S_Steam_Powered_Blade_%28Light%29.png" alt="S Steam Powered Blade (Light)">
+      S Steam Powered Blade (Light)
+    </div>
+    <div class="item light">
       <img class="item-img" src="https://static.miraheze.org/cravesagawiki/thumb/1/1c/S_Steam_Powered_Bow_%28Light%29.png/135px-S_Steam_Powered_Bow_%28Light%29.png" alt="S Steam Powered Bow (Light)">
       S Steam Powered Bow (Light)
     </div><div class="item light">
@@ -2984,6 +2987,7 @@
   'commemorative flag of dojo fubuki': 'https://static.miraheze.org/cravesagawiki/thumb/3/3f/Commemorative_Flag_of_Dojo_Fubuki.png/135px-Commemorative_Flag_of_Dojo_Fubuki.png',
   'lizarion wands': 'https://static.miraheze.org/cravesagawiki/thumb/d/de/Lizarion_Wands.png/135px-Lizarion_Wands.png',
   's steam powered axe (light)': 'https://static.miraheze.org/cravesagawiki/thumb/5/55/S_Steam_Powered_Axe_%28Light%29.png/135px-S_Steam_Powered_Axe_%28Light%29.png',
+  's steam powered blade (light)': 'https://static.miraheze.org/cravesagawiki/thumb/b/bc/S_Steam_Powered_Blade_%28Light%29.png/135px-S_Steam_Powered_Blade_%28Light%29.png',
   's steam powered bow (light)': 'https://static.miraheze.org/cravesagawiki/thumb/1/1c/S_Steam_Powered_Bow_%28Light%29.png/135px-S_Steam_Powered_Bow_%28Light%29.png',
   's steam powered gauntlet (light)': 'https://static.miraheze.org/cravesagawiki/thumb/2/23/S_Steam_Powered_Gauntlet_%28Light%29.png/135px-S_Steam_Powered_Gauntlet_%28Light%29.png',
   's steam powered gun (light)': 'https://static.miraheze.org/cravesagawiki/thumb/d/d7/S_Steam_Powered_Gun_%28Light%29.png/135px-S_Steam_Powered_Gun_%28Light%29.png',
@@ -3196,6 +3200,55 @@
       teamBuilder.className = 'team-builder selected ' + elementClass; // Add "selected" class
     });
   });
+</script>
+
+<!-- ELEMENTAL TOGGLE FUNCTION -->
+
+<script>
+  const fireToggle = document.querySelector('.element-toggle.fire');
+  const waterToggle = document.querySelector('.element-toggle.water');
+  const windToggle = document.querySelector('.element-toggle.wind');
+  const earthToggle = document.querySelector('.element-toggle.earth');
+  const lightToggle = document.querySelector('.element-toggle.light');
+  const darkToggle = document.querySelector('.element-toggle.dark');
+  
+  const allItems = document.querySelectorAll('.item');
+
+  fireToggle.addEventListener('click', () => {
+    toggleItems('fire');
+  });
+
+  waterToggle.addEventListener('click', () => {
+    toggleItems('water');
+  });
+
+  windToggle.addEventListener('click', () => {
+    toggleItems('wind');
+  });
+
+  earthToggle.addEventListener('click', () => {
+    toggleItems('earth');
+  });
+
+  lightToggle.addEventListener('click', () => {
+    toggleItems('light');
+  });
+
+  darkToggle.addEventListener('click', () => {
+    toggleItems('dark');
+  });
+
+  function toggleItems(elementClass) {
+    allItems.forEach(item => {
+      if (elementClass === 'all') {
+        item.style.display = 'block';
+      } else if (item.classList.contains(elementClass)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
 </script>
 
 </body>
