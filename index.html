@@ -164,6 +164,31 @@
   .clear-button:hover {
     background-color: #6c7e8f;
   }
+  .footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    color: #6c7e8f;
+  }
+  .footer p {
+    margin-bottom: 5px;
+  }
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  .footer li {
+    margin-bottom: 0px;
+  }
+  .footer a {
+    text-decoration: none;
+    color: #303d5b;
+    font-weight: bold;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
   @media (max-width: 480px) {
     body {
     zoom: 75%;
@@ -179,6 +204,9 @@
   <h1>Crave Saga Collection Tracker</h1>
   <p>Version 1.0</p>
 </div>
+
+<button class="share-button">Share URL</button>
+<input type="text" class="share-url-input" readonly>
 
 <div class="element-toggles">
   <img class="element-toggle fire" src="https://static.miraheze.org/cravesagawiki/4/49/ElementFire.png" alt="Fire">
@@ -2596,6 +2624,16 @@
 </div>
 
 <!-- ITEM LIST ENDS HERE -->
+
+<div class="footer">
+  <p>Resources</p>
+  <ul>
+    <li><a href="https://cravesaga.miraheze.org/wiki/Crave_Saga_Wiki" target="_blank">Crave Saga Wiki</a></li>
+    <li><a href="https://crave-saga.jp/" target="_blank">Official Crave Saga Website</a></li>
+    <li><a href="https://discord.com/invite/37FztFpj3t" target="_blank">Discord Server</a></li>
+  </ul>
+</div>
+
 <!-- MAIN WEBSITE CONTENT ENDS HERE -->
 
 <script>
@@ -3314,6 +3352,54 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+</script>
+
+<!-- SHARE URL -->
+
+<script>
+  // Function to encode data into URL parameters
+  function encodeDataToURL(data) {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const shareButton = document.querySelector('.share-button');
+    const shareUrlInput = document.querySelector('.share-url-input');
+    const soulmateInputs = document.querySelectorAll('.soulmate-input');
+    const weaponInputs = document.querySelectorAll('.weapon-input');
+    const artifactInputs = document.querySelectorAll('.artifact-input');
+    const selectedItems = document.querySelectorAll('.item.selected');
+
+    shareButton.addEventListener('click', () => {
+      const dataToShare = {}; // Collect data to share
+
+      // Get input values and selections
+      soulmateInputs.forEach((input, index) => {
+        dataToShare[`soulmate-${index}`] = input.value;
+      });
+
+      weaponInputs.forEach((input, index) => {
+        dataToShare[`weapon-${index}`] = input.value;
+      });
+
+      artifactInputs.forEach((input, index) => {
+        dataToShare[`artifact-${index}`] = input.value;
+      });
+
+      selectedItems.forEach((item, index) => {
+        dataToShare[`character-${index}`] = '1';
+      });
+
+      const encodedData = encodeDataToURL(dataToShare);
+      const shareableURL = window.location.origin + window.location.pathname + '?' + encodedData;
+      
+      // Display the URL in the input element
+      shareUrlInput.value = shareableURL;
+      shareUrlInput.select();
+    });
+  });
 </script>
 
 </body>
