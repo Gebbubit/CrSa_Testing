@@ -1,0 +1,188 @@
+  body {
+    font-family: Open Sans, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    zoom: 90%;
+    margin: 20px;
+    padding: 0;
+  }
+  .header {
+    color: #303d5b;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.5rem;
+  }
+  .header p {
+    color: #6c7e8f;
+    font-size: 1rem;
+    margin-top: 5px;
+  }
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .title {
+    color: #6c7e8f;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  .item-container {
+    display: flex;
+    gap: 10px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    color: #303d5b;
+    zoom: 75%;
+  }
+  .item {
+    border: 3px solid #303d5b;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    cursor: pointer;
+    transition: background-color 0.5s, opacity 0.5s; /* Added opacity transition */
+    width: 110px;
+    height: 100%;
+    background-color: #f8f9fa;
+  }
+  .item img {
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    margin-bottom: 5px;
+  }
+  .fire { background-color: #f8f9fa; }
+  .water { background-color: #f8f9fa; }
+  .earth { background-color: #f8f9fa; }
+  .wind { background-color: #f8f9fa; }
+  .light { background-color: #f8f9fa; }
+  .dark { background-color: #f8f9fa; }
+
+  .selected.fire { background-color: #f4a49f; }
+  .selected.water { background-color: #9eb8f5; }
+  .selected.earth { background-color: #c2b999; }
+  .selected.wind { background-color: #b3fdcb; }
+  .selected.light { background-color: #fff69d; }
+  .selected.dark { background-color: #e599fb; }
+
+  .item:not(.selected) img {
+    opacity: 0.25;
+  }
+  .team-builder {
+    border: 5px solid #303d5b;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px;
+    color: #6c7e8f;
+    font-weight: bold;
+  }
+  .team-builder input {
+    margin: 5px 0;
+  }
+  .input-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .input-container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 10px;
+  }
+  .soulmate-image,
+  .weapon-image,
+  .artifact-image {
+    width: 75x; /* Set the width of the image */
+    height: 75px; /* Set the height of the image */
+  }
+  .soulmate-input,
+  .weapon-input,
+  .artifact-input {
+    /* Adjust width as needed */
+    width: 75px;
+    border: 2px solid #989ead;
+    padding: 5px;
+  }
+  .input-container.artifact {
+    border: 3px solid #989ead; /* Black border */
+    background-color: #e4e8eb;
+    padding: 3px;
+  }
+  .artifact-image {
+    width: 75px; /* Set the width of the image */
+    height: 75px; /* Set the height of the image */
+  }
+  .input-container.artifact {
+    margin-bottom: 0px;
+  }
+  .element-toggles {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .element-toggle {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    opacity: 0.5;
+  }
+  .element-toggle:hover {
+    opacity: 1;
+  }
+  .clear-button {
+    margin-top: 10px; /* Adjust the margin as needed */
+    margin-bottom: 10px;
+    background-color: #303d5b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
+    font-size: .75rem;
+  }
+  .clear-button:hover {
+    background-color: #6c7e8f;
+  }
+  .footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    color: #6c7e8f;
+  }
+  .footer p {
+    margin-bottom: 5px;
+  }
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  .footer li {
+    margin-bottom: 0px;
+  }
+  .footer a {
+    text-decoration: none;
+    color: #303d5b;
+    font-weight: bold;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 480px) {
+    body {
+    zoom: 75%;
+  }
